@@ -16,7 +16,7 @@ app.use((req, res, next)=>{
   var now = new Date().toString();
   const log = `${now} ${req.method} ${req.url}`
   console.log(log);
-  fs.appendFIle('server.log', log + '\n', (err)=>{
+  fs.appendFile('server.log', log + '\n', (err)=>{
     if(err){
       console.log('Unable to append to server.log')
     }
@@ -56,6 +56,13 @@ app.get('/bad', (req, res)=>{
     error: 'Request Cannot Be Completed'
   })
 });
+
+app.get('/projects', (req, res)=>{
+  res.render('projects.hbs',{
+    pageTitle:'Projects Page'
+  })
+});
+
 //we define what happens when our web app is pinged, the / means
 //this is what happens when you ping the 'base' page, server.js
 //and the result is sending some HTML
