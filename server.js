@@ -7,6 +7,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 const app = express();
+const port = process.env.PORT||3000;
 
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
@@ -58,8 +59,8 @@ app.get('/bad', (req, res)=>{
 //we define what happens when our web app is pinged, the / means
 //this is what happens when you ping the 'base' page, server.js
 //and the result is sending some HTML
-app.listen(3000, ()=>{
-  console.log('Server is up on port 3000')
+app.listen(port, ()=>{
+  console.log(`Server is up on port ${port}`);
 });
 //here we bind our app to port 3000
 //so we can actually visit it
